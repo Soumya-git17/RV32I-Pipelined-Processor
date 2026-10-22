@@ -1,0 +1,37 @@
+FFF00093  // 0x00: addi x1, x0, -1        x1 = 0xFFFFFFFF
+00100113  // 0x04: addi x2, x0, 1
+0020A1B3  // 0x08: slt  x3, x1, x2        signed: -1 < 1  -> 1
+0020B233  // 0x0C: sltu x4, x1, x2        unsigned: big < 1 -> 0
+FF000293  // 0x10: addi x5, x0, -16       0xFFFFFFF0
+4022D313  // 0x14: srai x6, x5, 2         0xFFFFFFFC
+01C2D393  // 0x18: srli x7, x5, 28        0xF
+00411413  // 0x1C: slli x8, x2, 4         16
+F7F00493  // 0x20: addi x9, x0, -129      0xFFFFFF7F
+00902823  // 0x24: sw   x9, 16(x0)
+01100503  // 0x28: lb   x10, 17(x0)       byte 0xFF sign-extended
+01104583  // 0x2C: lbu  x11, 17(x0)       255
+01001603  // 0x30: lh   x12, 16(x0)       0xFF7F sign-extended
+01005683  // 0x34: lhu  x13, 16(x0)       65407
+002008A3  // 0x38: sb   x2, 17(x0)        mem word -> 0xFFFF017F
+01002703  // 0x3C: lw   x14, 16(x0)
+00201923  // 0x40: sh   x2, 18(x0)        mem word -> 0x0001017F
+01002783  // 0x44: lw   x15, 16(x0)
+00000813  // 0x48: addi x16, x0, 0
+0020C463  // 0x4C: blt  x1, x2, +8        taken
+00180813  // 0x50: addi x16, x16, 1       skipped
+0020E463  // 0x54: bltu x1, x2, +8        NOT taken
+00280813  // 0x58: addi x16, x16, 2       executed
+00115463  // 0x5C: bge  x2, x1, +8        taken
+00480813  // 0x60: addi x16, x16, 4       skipped
+0020F463  // 0x64: bgeu x1, x2, +8        taken
+00880813  // 0x68: addi x16, x16, 8       skipped
+07800893  // 0x6C: addi x17, x0, 0x78
+00088967  // 0x70: jalr x18, 0(x17)       x18 = 0x74, jumps to 0x78
+06300993  // 0x74: addi x19, x0, 99       skipped
+02A00A13  // 0x78: addi x20, x0, 42
+10000F37  // 0x7C: lui  x30, 0x10000      x30 = 0x10000000
+000F2223  // 0x80: sw   x0, 4(x30)        exit code 0 to 0x10000004
+0000006F  // 0x84: jal  x0, 0             end: self-loop
+00000013  // 0x88: nop
+00000013  // 0x8C: nop
+00000013  // 0x90: nop

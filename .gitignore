@@ -1,0 +1,6 @@
+obj_dir/
+docs/
+*.vcd
+sw/*.elf
+sw/*.bin
+sw/*.dump
